@@ -17,7 +17,7 @@ pipeline{
                 
                 stage("upload artifacts to S3"){
 			steps{
-			 withAWS(region: $BUCKET_REGION, credentials:'awscreds') {
+			 withAWS(region: env.BUCKET_REGION, credentials:'awscreds') {
 
                                 
 
