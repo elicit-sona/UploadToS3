@@ -4,15 +4,19 @@ pipeline{
 	parameters{
 		string(name: 'BUCKET_REGION', defaultValue: 'us-east-1', description: 'specify the region where bucket resides')
 		string(name: 'BUCKET_NAME', defaultValue: 'bu-lambda', description: 'specify the bucket name')
+		string(name: 'GIT_URL', defaultValue: 'https://github.com/elicit-sona/UploadToS3.git', description: 'specify git url')
+		string(name: 'BRANCH', defaultValue: 'master', description: 'enter branch name')
+		string(name: 'GIT_CREDENTIALS_ID', defaultValue: 'gitcreds', description: 'specify which credentials id to be used')
 		
 	}
 	
 	stages{
 		 stage("Checkout code") {
-			 steps {
-				 checkout([$class: 'GitSCM', branches: [
-					 [name: APP_BRANCH_NAME]
-				 ], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: APP_GIT_REPO]]])
+			 steps{
+				 git branch: $BRANCH,
+					 credentialsId: $GIT_CREDENTIALS_ID,
+					 url: $GIT_URL
+
 				 sh 'ls -lart ./*'
    			}
   		}
