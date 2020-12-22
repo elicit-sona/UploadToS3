@@ -8,6 +8,14 @@ pipeline{
 	}
 	
 	stages{
+		 stage("Checkout code") {
+			 steps {
+				 checkout([$class: 'GitSCM', branches: [
+					 [name: APP_BRANCH_NAME]
+				 ], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: APP_GIT_REPO]]])
+				 sh 'ls -lart ./*'
+   			}
+  		}
 		stage("zip source code"){
 			steps{
 			sh 'echo "ziping your source code............"'
