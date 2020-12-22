@@ -1,5 +1,6 @@
 pipeline{
 	agent any
+	
 	parameters{
 		string(name: 'BUCKET_REGION', defaultValue: 'us-east-1', description: 'specify the region where bucket resides')
 	}
@@ -7,7 +8,7 @@ pipeline{
 	stages{
 		stage("zip source code"){
 			steps{
-			sh 'echo $BUCKET_REGION'
+			sh 'echo "$BUCKET_REGION"'
 			sh 'echo "ziping your source code............"'
 			sh 'zip -r source_code.zip * -x Jenkinsfile '
                         sh 'ls'
