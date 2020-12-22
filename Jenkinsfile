@@ -1,13 +1,13 @@
 pipeline{
 	agent any
 	parameters{
-		string(name: 'REGION', defaultValue: 'us-east-1', description: 'specify the region where bucket resides ')
+		string(name: 'BUCKET_REGION', defaultValue: 'us-east-1', description: 'specify the region where bucket resides')
 	}
 	
 	stages{
 		stage("zip source code"){
 			steps{
-			
+			sh 'echo $BUCKET_REGION'
 			sh 'echo "ziping your source code............"'
 			sh 'zip -r source_code.zip * -x Jenkinsfile '
                         sh 'ls'
@@ -16,7 +16,7 @@ pipeline{
                 
                 stage("upload artifacts to S3"){
 			steps{
-			 withAWS(region:$REGION, credentials:'awscreds') {
+			 withAWS(region: $BUCKET_REGION, credentials:'awscreds') {
 
                                 
 
