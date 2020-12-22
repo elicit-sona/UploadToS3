@@ -1,6 +1,8 @@
 pipeline{
 	agent any
-
+	parameters{
+		string(name: 'REGION', defaultValue: 'us-east-1', description: 'specify the region where bucket resides ')
+	}
 	
 	stages{
 		stage("zip source code"){
@@ -14,7 +16,7 @@ pipeline{
                 
                 stage("upload artifacts to S3"){
 			steps{
-			 withAWS(credentials:'awscreds') {
+			 withAWS(region:$REGION, credentials:'awscreds') {
 
                                 
 
