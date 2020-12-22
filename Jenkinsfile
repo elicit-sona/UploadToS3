@@ -7,7 +7,7 @@ pipeline{
 			steps{
 			
 			sh 'echo "ziping your source code............"'
-			sh 'zip -r source_code.zip * -x JenkinsFile'
+			sh 'zip -r source_code.zip * -x Jenkinsfile'
                         sh 'ls'
 			}
 		}
@@ -19,7 +19,7 @@ pipeline{
                                 
 
                                 // Upload files from working directory 'dist' in your project workspace
-                                s3Upload(bucket:"bu-lambda", workingDir:"**/source_code.zip");
+                                s3Upload(bucket:"bu-lambda", file:"source_code.zip");
                         }
 			}	
 	        }
