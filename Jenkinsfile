@@ -8,7 +8,7 @@ pipeline{
 		string(name: 'BRANCH', defaultValue: 'master', description: 'enter branch name')
 		string(name: 'GIT_CREDENTIALS_ID', defaultValue: 'gitcreds', description: 'specify which credentials id to be used for git')
 		string(name: 'AWS_CREDENTAILS_ID', defaultValue: 'awscreds', description: 'specify which credentails id to be used for aws')
-		string(name: 'S3_PATH', defaultValue: 'JenkinsArtifacts/', description: 'enter the bucket-suffix path where artifacts are to be stored')
+		string(name: 'S3_PATH', defaultValue: 'JenkinsArtifacts/ZipCode/', description: 'enter the bucket-suffix path where artifacts are to be stored')
 	}
 	
 	stages{
