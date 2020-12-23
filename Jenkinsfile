@@ -17,7 +17,7 @@ pipeline{
 				 git branch: BRANCH,
 					 credentialsId: GIT_CREDENTIALS_ID,
 					 url: GIT_URL
-				 sh 'ls -lart ./*'
+				 sh 'ls -lat ./*'
    			}
   		}
 		stage("zip source code"){
