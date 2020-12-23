@@ -16,11 +16,10 @@ pipeline{
 	stages{
 		 stage("Checkout code") {
 			 steps{
-				 checkout scm
-				 git branch: BRANCH,
-					 credentialsId: GIT_CREDENTIALS_ID,
-					 url: GIT_URL
-
+				 checkout([$class: 'GitSCM', branches: [ [name: BRANCH] ], 
+					   doGenerateSubmoduleConfigurations: false, 
+					   extensions: [], submoduleCfg: [], 
+					   userRemoteConfigs: [ [url: GIT_URL] ] ])
 				 sh 'ls -lart ./*'
    			}
   		}
