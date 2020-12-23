@@ -18,6 +18,7 @@ fulfillment = {
 def get_fulfillment(event, msg):
     logger.info(('Inside fulfillment.get_fulfillment()'))
     logger.debug(('Recieved msg: ', msg))
+    print(msg)
     fulfillment['sessionAttributes'] = event['sessionAttributes']
     fulfillment['dialogAction']['message']['content'] = str(msg)
     return fulfillment
