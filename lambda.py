@@ -9,7 +9,7 @@ def list_clusters(event, region, state):
     emr = get_client(event, region)
     resp = emr.list_clusters()
     result = []
-    print("result")
+    print("result ", result)
     if state == '' or state == 'all':
         for i in resp['Clusters']:
             cid=i['Id']
