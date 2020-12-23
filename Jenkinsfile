@@ -10,9 +10,7 @@ pipeline{
 		string(name: 'AWS_CREDENTAILS_ID', defaultValue: 'awscreds', description: 'specify which credentails id to be used for aws')
 		string(name: 'S3_PATH', defaultValue: 'JenkinsArtifacts/ZipCode/', description: 'enter the bucket-suffix path where artifacts are to be stored')
 	}
-	triggers {
-		pollSCM('') // Enabling being build on Push
-	}
+	
 	stages{
 		 stage("Checkout code") {
 			 steps{
