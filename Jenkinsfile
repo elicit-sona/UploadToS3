@@ -32,7 +32,7 @@ pipeline{
 			steps{
 			sh 'echo "uploading artifacts to S3 Bucket $BUCKET_NAME............."'
 			withAWS(region: BUCKET_REGION, credentials: AWS_CREDENTAILS_ID) {
-                                // Upload files to S3 bucket
+                                // Upload files to aws S3 bucket
                                 s3Upload(bucket: BUCKET_NAME, file:"source_code.zip", path: S3_PATH);
                         }
 			}	
