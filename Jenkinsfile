@@ -14,6 +14,7 @@ pipeline{
 	stages{
 		 stage("Checkout code") {
 			 steps{
+				 checkout scm
 				 git branch: BRANCH,
 					 credentialsId: GIT_CREDENTIALS_ID,
 					 url: GIT_URL
